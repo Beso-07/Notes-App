@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notesapp/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notesapp/models/note_model.dart';
+import 'package:notesapp/views/colors/colors_list_view.dart';
 import 'package:notesapp/views/widgets/custom_button.dart';
 import 'package:notesapp/views/widgets/custom_text_field.dart';
 
@@ -16,6 +17,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
   final GlobalKey<FormState> formkey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, subTitle;
+  Color selectedColor = Colors.blueAccent;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,13 @@ class _AddNoteFormState extends State<AddNoteForm> {
               subTitle = value;
             },
           ),
+          const SizedBox(height: 20),
+
+          ColorsListView(
+            onColorSelected: (color) {
+              selectedColor = color;
+            },
+          ),
           const SizedBox(height: 40),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
@@ -53,7 +62,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       content: subTitle!,
                       date:
                           "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
-                      color: Colors.cyanAccent.value,
+                      color: selectedColor.value,
                     );
 
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
