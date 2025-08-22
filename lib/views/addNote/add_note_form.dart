@@ -50,7 +50,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     formkey.currentState!.save();
                     var noteModel = NoteModel(
                       title: title!,
-                      subTitle: subTitle!,
+                      content: subTitle!,
                       date:
                           "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
                       color: Colors.cyanAccent.value,
