@@ -25,14 +25,14 @@ class _AddNoteFormState extends State<AddNoteForm> {
 
       child: Column(
         children: [
-          SizedBox(height: 32),
+          const SizedBox(height: 32),
           CustomTextField(
             hint: 'title',
             onSaved: (value) {
               title = value;
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           CustomTextField(
             hint: 'content',
             maxLines: 8,
@@ -40,7 +40,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               subTitle = value;
             },
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomButton(
@@ -51,7 +51,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     var noteModel = NoteModel(
                       title: title!,
                       subTitle: subTitle!,
-                      date: DateTime.now().toString(),
+                      date:
+                          "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
                       color: Colors.cyanAccent.value,
                     );
 
