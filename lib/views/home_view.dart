@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notesapp/constant.dart';
-import 'package:notesapp/views/widgets/add_note_model_sheet.dart';
-import 'package:notesapp/views/widgets/custom_body_view.dart';
+import 'package:notesapp/views/addNote/add_note_bottom_sheet.dart';
+import 'package:notesapp/views/notes/notes_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -9,19 +9,20 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomBodyView(),
+      body: NotesView(),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(right: 8, bottom: 8),
         child: FloatingActionButton(
           backgroundColor: kPrimaryColor,
           onPressed: () {
             showModalBottomSheet(
+              isScrollControlled: true,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
               context: context,
               builder: (contex) {
-                return AddNodeModelSheet();
+                return AddNodeBottomSheet();
               },
             );
           },
