@@ -30,4 +30,6 @@ Flutter (UI Framework)
 
 Dart (Programming Language)
 
+Hive (Local NoSQL Database)
+
 flutter_bloc (State Management)
