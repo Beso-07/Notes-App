@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notesapp/cubits/show_notes_cubit/shownotes_cubit.dart';
 import 'package:notesapp/models/note_model.dart';
 import 'package:notesapp/views/colors/colors_list_view.dart';
+import 'package:notesapp/views/notes_view.dart';
 import 'package:notesapp/views/widgets/custom_appbar.dart';
 import 'package:notesapp/views/widgets/custom_text_field.dart';
 
@@ -39,7 +40,10 @@ class _EditNoteBodyViewState extends State<EditNoteBodyView> {
               widget.note.color = selectedColor.value;
               widget.note.save();
               BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-              Navigator.pop(context);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => NotesView()),
+              );
             },
           ),
           const SizedBox(height: 20),
