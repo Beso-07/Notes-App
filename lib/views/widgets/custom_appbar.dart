@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:notesapp/views/widgets/custom_icon_button.dart';
 
 class CustomAppbar extends StatelessWidget {
-  const CustomAppbar({super.key, required this.title, required this.icon, this.onPressed});
+  const CustomAppbar({
+    super.key,
+    required this.title,
+    required this.icon,
+    this.onPressed,
+  });
   final String title;
   final IconData icon;
   final void Function()? onPressed;
@@ -11,7 +16,7 @@ class CustomAppbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(title, style: TextStyle(fontSize: 28)),
+        Text(title, style: TextStyle(fontSize: 28, )),
         Spacer(),
         Container(
           width: 45,
@@ -20,7 +25,12 @@ class CustomAppbar extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             color: Colors.white.withOpacity(.05),
           ),
-          child: Center(child: CustomIconButton(icon: icon,onPressed: onPressed,)),
+          child: Center(
+            child: CustomIconButton(
+              icon: icon,
+              onPressed: onPressed,
+            ),
+          ),
         ),
       ],
     );

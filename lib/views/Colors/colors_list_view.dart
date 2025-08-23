@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:notesapp/views/colors/color_item.dart';
+import 'package:notesapp/views/Colors/color_item.dart';
 
 class ColorsListView extends StatefulWidget {
-  final ValueChanged<Color> onColorSelected; // 👈 callback
+  final ValueChanged<Color> onColorSelected;
+  final Color initialColor; 
 
-  const ColorsListView({super.key, required this.onColorSelected});
+  const ColorsListView({
+    super.key,
+    required this.onColorSelected,
+    required this.initialColor,
+  });
 
   @override
   State<ColorsListView> createState() => _ColorsListViewState();
 }
 
 class _ColorsListViewState extends State<ColorsListView> {
-  int selectedIndex = 0;
+  late int selectedIndex;
 
   final List<Color> colors = [
     Color(0xff03dffc),
@@ -27,6 +32,15 @@ class _ColorsListViewState extends State<ColorsListView> {
     Color(0xff8a6538),
     Color(0xffb03188),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = colors.indexOf(widget.initialColor);
+    if (selectedIndex == -1) {
+      selectedIndex = 0; 
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

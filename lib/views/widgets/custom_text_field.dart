@@ -8,7 +8,8 @@ class CustomTextField extends StatelessWidget {
     this.maxLines = 1,
     this.onSaved,
     this.onChanged,
-    this.initialValue, this.autofocus = false,
+    this.initialValue,
+    this.autofocus = false,
   });
   final String hint;
   final int maxLines;
@@ -37,7 +38,7 @@ class CustomTextField extends StatelessWidget {
         hintText: hint,
         hintStyle: const TextStyle(color: kPrimaryColor),
         enabledBorder: buildBorder(),
-        focusedBorder: buildBorder(kPrimaryColor),
+        focusedBorder: buildBorder(),
         errorBorder: buildBorder(Colors.red),
       ),
     );

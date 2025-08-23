@@ -45,6 +45,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
           const SizedBox(height: 20),
 
           ColorsListView(
+            initialColor: selectedColor,
             onColorSelected: (color) {
               selectedColor = color;
             },
